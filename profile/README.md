@@ -1,16 +1,24 @@
-# Welcome to Ferrox-RC 🦀✈️
+# Ferrox-RC 🦀✈️
 
-**Ferrox-RC** is an open-source initiative dedicated to bringing deterministic, memory-safe, `#![no_std]` Rust to radio control hardware and autonomous avionics.
+Open-source initiative exploring deterministic, memory-safe, `#![no_std]` Rust for radio control transmitters and autonomous UAV avionics.
 
-🌐 **Website:** [ferroxrc.com](https://ferroxrc.com)
+🌐 **Website & Documentation:** [ferroxrc.com](https://ferroxrc.com)
 
 ---
 
-### 🛰️ The Ground-to-Air Ecosystem
+### Projects
 
-- 🎮 **[flysky-i6x-rs](https://github.com/ferrox-rc/flysky-i6x-rs)**: A clean-slate, bare-metal Rust OS for the FlySky FS-i6X transmitter. Sub-4ms packet sync (A7105 / AFHDS 2A), 14-channel matrix mixer, Catmull-Rom spline curves, native 100 Hz USB HID simulator, native CRSF/ELRS configurator, and SE/SF & P7 hardware extensions.
-- 🎮 **[flysky-i6s-rs](https://github.com/ferrox-rc/flysky-i6s-rs)**: A sister fork of the i6X architecture tailored for the FlySky FS-i6S transmitter. Brings the bare-metal `#![no_std]` runtime, matrix mixer, and CRSF/ELRS telemetry to the i6S platform with touchscreen support and dual-antenna hardware control.
-- 🛩️ **[wingfc-rs](https://github.com/ferrox-rc/wingfc-rs)**: Deterministic, high-rate flight controller firmware for sub-250g FPV flying wings and autonomous UAVs on the nRF52840 (Embassy async, hardware interrupt driven control loop, Madgwick AHRS, i-BUS / CRSF telemetry).
-- 🛠️ **[wingfc-hardware](https://github.com/ferrox-rc/wingfc-hardware)**: Ultra-compact 25.5×25.5mm hardware carrier board (KiCad schematics & 4-layer PCB layout) hosting the Seeed XIAO nRF52840 Sense, 10 actuator outputs (2 ESCs + 8 servos), integrated DPS310 barometer, and 2S–6S high-efficiency synchronous BEC.
+#### 🎮 Radio Transmitter Firmware
+- **[ferrox](https://github.com/ferrox-rc/ferrox)**: Universal, bare-metal RC transmitter operating system in `#![no_std]` Rust. Multi-radio monorepo structured around `ferrox-core` and compile-time `BoardProfile` specialization:
+  - **FlySky FS-i6X** (`boards/ferrox-i6x`): Deterministic 260 Hz packet sync (A7105 / AFHDS 2A), 18-channel matrix mixer, integer Catmull-Rom spline curves, 100 Hz USB HID simulator, native CRSF / ExpressLRS configurator with unified 255-parameter pool, sub-2ms warm reset recovery, and >20% free flash headroom.
+  - **FlySky FS-i6S** (`boards/ferrox-i6s`): Full hardware driver integration for FocalTech FT6236 capacitive touchscreen (Fast-mode I2C), dual rear tactile buttons, electronic power latch with soft hold-to-shutdown, and dual-antenna RF switching.
+  - **RadioMaster Pocket** (`PocketSpec`): STM32F407 Cortex-M4F target with rotary encoder navigation, ST7567 SPI display, and native ExpressLRS / CC2500 support.
+  - *Note: Individual repos [`flysky-i6x-rs`](https://github.com/ferrox-rc/flysky-i6x-rs) and [`flysky-i6s-rs`](https://github.com/ferrox-rc/flysky-i6s-rs) are unified under the `ferrox` monorepo.*
 
-*Built for pilots, makers, and embedded engineers.*
+#### 🛩️ Flight Control & Carrier Board
+- **[wingfc-rs](https://github.com/ferrox-rc/wingfc-rs)**: High-rate, bare-metal Rust flight controller firmware for sub-250g flying wings and autonomous UAVs on the Seeed XIAO nRF52840 Sense (Cortex-M4F @ 64 MHz). Built on the cooperative Embassy async runtime with selectable 416 Hz / 833 Hz control loops, Madgwick quaternion AHRS, barometric vertical Kalman filter, GPS Return-to-Home (RTH), and human-readable `wingfc.yaml` configuration. [[Learn more on ferroxrc.com]](https://ferroxrc.com/wingfc#firmware)
+- **[wingfc-hardware](https://github.com/ferrox-rc/wingfc-hardware)**: Ultra-compact 25.5×25.5mm hardware carrier board (KiCad schematics & 4-layer PCB layout) engineered for the Seeed XIAO nRF52840 Sense. Features 10 actuator outputs (2 ESCs + 8 servos), an onboard Infineon DPS310 precision barometer, high-efficiency MP2315 5V/2A synchronous buck BEC (2S–6S LiPo input), forward-facing USB-C port, and JST-SH quick-connect sockets for CRSF/ELRS and GPS/compass. [[Learn more on ferroxrc.com]](https://ferroxrc.com/wingfc#carrier-board)
+
+---
+
+*Open source under GPL-3.0 (firmware) and MIT (hardware). Built for pilots, makers, and embedded engineers.*
