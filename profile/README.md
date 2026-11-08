@@ -1,8 +1,11 @@
 # Ferrox-RC 🦀✈️
 
+[![Discord](https://img.shields.io/badge/Discord-Join%20Ferrox%20RC-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/Gw4JS7skCq)
+[![Website](https://img.shields.io/badge/Website-ferroxrc.com-0A66C2?style=for-the-badge&logo=google-chrome&logoColor=white)](https://ferroxrc.com)
+
 Open-source initiative exploring deterministic, memory-safe, `#![no_std]` Rust for radio control transmitters and autonomous UAV avionics.
 
-🌐 **Website & Documentation:** [ferroxrc.com](https://ferroxrc.com)
+🌐 **Website & Documentation:** [ferroxrc.com](https://ferroxrc.com) · 💬 **Community Discord:** [discord.gg/Gw4JS7skCq](https://discord.gg/Gw4JS7skCq)
 
 ---
 
